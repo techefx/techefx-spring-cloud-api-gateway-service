@@ -8,8 +8,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class CloudRoutingConfig {
 
-    @Bean
-    public RouteLocator gatewayRoutes(RouteLocatorBuilder builder)
+  //  @Bean
+   /** public RouteLocator gatewayRoutes(RouteLocatorBuilder builder)
     {
         return builder.routes().route(
                 r->r.path("/product-enquiry/**")
@@ -17,6 +17,6 @@ public class CloudRoutingConfig {
                 .id("stock-enquiry")
         ).build();
 
-    }
+    }*/
 
 }

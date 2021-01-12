@@ -1,18 +1,31 @@
 spring:
   application:
     name: techefx-spring-cloud-api-gateway-service
+  zipkin:
+    enabled: true
+    base-url: ${ZIPKIN_SERVER:http://localhost:9411/}
 
-
- # cloud:
- #   gateway:
- #     routes:
- #       - id: stock-enquiry
- #         uri: http://localhost:8700/
- #         predicates:
- #           - Path=/product-enquiry/**
-
+  cloud:
+    gateway:
+      routes:
+        - id: stock-enquiry
+          uri: http://techefx-product-enquiry-service:8700/
+          predicates:
+            - Path=/product-enquiry/**
 
 server:
   port: ${port:8900}
 
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVER:http://localhost:8761/eureka}
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
